@@ -1,7 +1,7 @@
 package ru.warpreaktor;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.Random;
 
 public class Main {
 
@@ -9,11 +9,34 @@ public class Main {
     static int NUM_BOUND = 100000;
 
     public static void main(String[] args) {
-        int[] arr = initializeArrayNumbers();
-        //Arrays.stream(arr).forEach(result -> System.out.print(result + " "));
+
+
+    }
+
+    static void test(){
+        int[] arr = Generator.genIntegerArray(ARR_SIZE, false);
+
+        Date start = new Date();
+        stupidSearchInteger(arr,678098);
+        System.out.println();
+        System.out.println("----------------");
+        Date end = new Date();
+        long result = end.getTime() - start.getTime();
+        System.out.println("Затрачено времени - " + (result / 1000) + " sec - " + (result % 1000) + " mill");
+
+        Date start2 = new Date();
+        binarySearchInteger(arr, 678098);
+        Date end2 = new Date();
+        System.out.println();
+        System.out.println("----------------");
+        long result2 = end2.getTime() - start2.getTime();
+        System.out.println("Затрачено времени - " + (result2 / 1000) + " sec - " + (result2 % 1000) + " mill");
+    }
+
+    private void bubbleSortTest(){
+        int[] arr = Generator.genIntegerArray(ARR_SIZE, true);
         Date start = new Date();
         bubbleSort(arr);
-        //Arrays.stream(arr).forEach(result -> System.out.print(result + " "));
         System.out.println();
         System.out.println("----------------");
         Date end = new Date();
@@ -40,6 +63,8 @@ public class Main {
         return arr;
     }
 
+    //Усовершенствованная сортировка пузырьком. Теперь мы двигаемся туда и обратно при первой итерации сдвигая
+    // максимальное число в конец, а в следующей минимальное число в начало.
     private static int[] shakerSort(int[] arr) {
         int buf = 0;
         int count = arr.length;
@@ -56,14 +81,20 @@ public class Main {
         return arr;
     }
 
-    private static int[] initializeArrayNumbers(){
-        Random random = new Random();
-        int arr[] = new int[ARR_SIZE];
+    private static Integer stupidSearchInteger(int[] arr, int search){
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(NUM_BOUND);
+            if (arr[i] == search){
+                return arr[i];
+            }
         }
-        return arr;
+        return null;
     }
 
+    private static Integer binarySearchInteger(int[] arr, int search){
+        if (arr.length / 2 == search){
+            return arr.length / 2;
+        }
+        return null;
+    }
 
 }
