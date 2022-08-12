@@ -1,10 +1,14 @@
 package ru.warpreaktor.leetcode;
 
+import ru.warpreaktor.leetcode.problems.stack.ValidParentheses;
+import ru.warpreaktor.leetcode.utils.LeetCodeGenerator;
+
+import java.math.BigDecimal;
+
 public class LeetcodeSolutions {
 
     public static void main(String[] args) {
-        LeetcodeSolutions test = new LeetcodeSolutions();
-        test.testListNode2();
+        ValidParentheses.test();
     }
 
     /**
@@ -29,28 +33,10 @@ public class LeetcodeSolutions {
      * You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
      * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
      */
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        Integer number1 = Integer.parseInt(listNodeReader(l1));
-        Integer number2 = Integer.parseInt(listNodeReader(l2));
-        String result = String.valueOf(number1 + number2);
+        BigDecimal number1 = new BigDecimal(listNodeReader(l1));
+        BigDecimal number2 = new BigDecimal(listNodeReader(l2));
+        String result = String.valueOf(number1.add(number2));
 
         ListNode resultedListNode = new ListNode(Integer.valueOf(String.valueOf(result.charAt(result.length() - 1))), new ListNode());
         ListNode curNode = resultedListNode;
@@ -120,20 +106,15 @@ public class LeetcodeSolutions {
         return notDuplicate;
     }
 
-    private void testListNode1() {
-        ListNode l1 = new ListNode(2);
-        l1.next = new ListNode(4);
-        l1.next.next = new ListNode(3);
+    private void addTwoNumbersTest() {
+        ListNode ln1 = LeetCodeGenerator.generateListNode(new int[]{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1});
+        ListNode ln2 = LeetCodeGenerator.generateListNode(new int[]{6,6,4});
 
-        ListNode l2 = new ListNode(5);
-        l2.next = new ListNode(7);
-        l2.next.next = new ListNode(4);
-        ListNode result = addTwoNumbers(l1, l2);
-        do {
-            System.out.println(result.next.val);
+        ListNode result = addTwoNumbers(ln1, ln2);
+        while (result != null){
+            System.out.print(result);
             result = result.next;
         }
-        while (result.next != null);
     }
 
     private void testListNode2() {
