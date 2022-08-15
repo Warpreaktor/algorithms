@@ -3,13 +3,11 @@ package ru.warpreaktor.sort;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import ru.warpreaktor.util.Generator;
 
 import java.util.Arrays;
 
-class InsertionSortTest {
+class SortTest {
 
     //Общий массив для проведения теста на производительность.
     int[] arr = Generator.genIntegerArray(100000, true);
