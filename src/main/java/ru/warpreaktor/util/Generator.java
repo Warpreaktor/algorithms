@@ -1,4 +1,4 @@
-package ru.warpreaktor;
+package ru.warpreaktor.util;
 
 import java.util.Random;
 
