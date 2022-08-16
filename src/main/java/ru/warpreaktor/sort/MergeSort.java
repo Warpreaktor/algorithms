@@ -1,7 +1,5 @@
 package ru.warpreaktor.sort;
 
-import ru.warpreaktor.util.Utils;
-
 import java.util.Arrays;
 
 /**
@@ -11,7 +9,7 @@ import java.util.Arrays;
  * отсортирован. Идея заключается в том, что бы рекурсивно вызывать метод сортировки на массивах более двух элементов,
  * пока не доберемся до двух отсортированных массивов (согласно утверждению выше). Далее вверх по стеку будем возвращать
  * уже отсортированные два массива которые так же будут подвергаться слиянию до самой верхушки стека.
- * T(n) = O(n)
+ * T(n) = O(n log n)
  * код взят с лекции Павла Маврина - https://www.youtube.com/watch?v=apR9GhhjBjM&ab_channel=PavelMavrin
  */
 public class MergeSort {
