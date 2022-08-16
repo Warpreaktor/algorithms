@@ -8,4 +8,12 @@ public class Utils {
         arr[indexA] = b;
         return arr;
     }
+
+    public static int compareAndGetMin(int x, int y){
+        return (x < y) ? x : ((x == y) ? x : y);
+    }
+
+    public static int compareAndGetMax(int x, int y){
+        return (x < y) ? y : ((x == y) ? y : x);
+    }
 }

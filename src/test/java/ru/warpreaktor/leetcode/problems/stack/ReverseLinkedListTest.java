@@ -45,9 +45,5 @@ class ReverseLinkedListTest {
             result = result.next;
         }
 
-        ln1 = new ListNode(1, null);
-        Assertions.assertEquals(1, ReverseLinkedList.reverseList(ln1).val);
-
-
     }
 }

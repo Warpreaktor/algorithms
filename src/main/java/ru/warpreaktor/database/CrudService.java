@@ -1,4 +1,4 @@
-package ru.warpreaktor;
+package ru.warpreaktor.database;
 
 import java.sql.*;
 

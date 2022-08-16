@@ -36,7 +36,7 @@ class SortTest {
     }
 
     @Test
-    void bubbleSortMin() {
+    void bubbleSort() {
         int[] arr = new int[]{};
         Assertions.assertArrayEquals(new int[]{}, BubbleSort.sortInteger(arr));
 
@@ -57,4 +57,33 @@ class SortTest {
         BubbleSort.sortInteger(arra);
 
     }
+
+    @Test
+    void mergeSort() {
+        int[] arr = new int[]{};
+        Assertions.assertArrayEquals(new int[]{}, MergeSort.sortInteger(arr));
+
+        arr = new int[]{2,1};
+        Assertions.assertArrayEquals(new int[]{1,2}, MergeSort.sortInteger(arr));
+
+        arr = new int[]{2,3,1};
+        Assertions.assertArrayEquals(new int[]{1,2,3}, MergeSort.sortInteger(arr));
+
+        arr = new int[]{10,5,7,3,8,2};
+        Assertions.assertArrayEquals(new int[]{2,3,5,7,8,10},MergeSort.sortInteger(arr));
+
+        arr = new int[]{8,10,5,7,2,3,8,2};
+        Assertions.assertArrayEquals(new int[]{2,2,3,5,7,8,8,10},MergeSort.sortInteger(arr));
+
+        arr = new int[]{956,-1,0,5,-7,3,3,8,2,956};
+        Assertions.assertArrayEquals(new int[]{-7,-1,0,2,3,3,5,8,956,956},MergeSort.sortInteger(arr));
+    }
+
+    @Test
+    void MergeSortBigData() {
+        int[] arra = Arrays.copyOf(arr, arr.length);
+        MergeSort.sortInteger(arra);
+
+    }
+
 }
