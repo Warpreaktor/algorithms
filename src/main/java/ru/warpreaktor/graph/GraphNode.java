@@ -1,7 +1,6 @@
 package ru.warpreaktor.graph;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.LinkedList;
 
 /**
@@ -19,57 +18,71 @@ public class GraphNode {
     private LocalDateTime timeExited;
     private int entryCount = 0;
     private boolean isLooped = false;
-    private LinkedList<GraphNode> graphNodeList;
+    private LinkedList<GraphNode> outgoingNodeList;
+    private LinkedList<GraphNode> incomingNodeList;
 
     public GraphNode() {
-        graphNodeList = new LinkedList<>();
+        outgoingNodeList = new LinkedList<>();
         this.name = this.toString();
     }
 
     public GraphNode(String name) {
-        graphNodeList = new LinkedList<>();
+        outgoingNodeList = new LinkedList<>();
         this.name = name;
     }
 
-    public GraphNode(LinkedList<GraphNode> graphNodeList) {
+    public GraphNode(LinkedList<GraphNode> outgoingNodeList) {
         this.name = this.toString();
-
+        outgoingNodeList = new LinkedList<>();
+        addAllOutgoing(outgoingNodeList);
     }
 
-    public GraphNode(String name, LinkedList<GraphNode> graphNodeList) {
+    public GraphNode(String name, LinkedList<GraphNode> outgoingNodeList) {
         this.name = name;
-        this.graphNodeList = graphNodeList;
+        outgoingNodeList = new LinkedList<>();
+        addAllOutgoing(outgoingNodeList);
     }
 
-    public LinkedList<GraphNode> getGraphNodeList() {
-        return graphNodeList;
+    public LinkedList<GraphNode> getOutgoingNodeList() {
+        return outgoingNodeList;
     }
 
-    public void setGraphNodeList(LinkedList<GraphNode> graphNodeList) {
-        this.graphNodeList = graphNodeList;
+    public LinkedList<GraphNode> getIncomingNodeList() {
+        return incomingNodeList;
     }
 
-    public boolean add(GraphNode v) {
-        return getGraphNodeList().add(v);
+    public boolean addOutgoing(GraphNode v) {
+        this.getOutgoingNodeList().add(v);
+        v.addIncoming(this);
+        return true;
     }
 
-    public boolean addAll(LinkedList<GraphNode> c) {
-        return getGraphNodeList().addAll(c);
-    }
-
-    public boolean addFew(GraphNode... nodes) {
-        for (GraphNode node : nodes) {
-            getGraphNodeList().add(node);
+    public boolean addAllOutgoing(LinkedList<GraphNode> c) {
+        getOutgoingNodeList().addAll(c);
+        for (GraphNode node : c) {
+            node.addIncoming(this);
         }
         return true;
     }
 
+    public boolean addFewOutgoing(GraphNode... nodes) {
+        for (GraphNode node : nodes) {
+            getOutgoingNodeList().add(node);
+            node.addIncoming(this);
+        }
+        return true;
+    }
+
+    private boolean addIncoming(GraphNode v) {
+        return getOutgoingNodeList().add(v);
+    }
+
     public void remove(GraphNode v) {
-        getGraphNodeList().remove();
+        getOutgoingNodeList().remove();
     }
 
     public void remove(int index) {
-        getGraphNodeList().remove(index);
+        getOutgoingNodeList().remove(index);
     }
 
     public String getName() {
@@ -120,7 +133,7 @@ public class GraphNode {
     }
 
     public void print() {
-        System.out.println(this + " - " + this.getGraphNodeList());
+        System.out.println(this + " - " + this.getOutgoingNodeList());
     }
 
     public boolean isLooped() {

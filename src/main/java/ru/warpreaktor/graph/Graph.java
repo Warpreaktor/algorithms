@@ -68,14 +68,10 @@ public class Graph {
     /**
      * Обход в глубину - Different Search.
      * Реализация алгоритма - https://www.youtube.com/watch?v=80icIrhJ6G0&t=696s&ab_channel=PavelMavrin
-     * В данном алглоритме происходит полное копирование существующих нод в объекты предназначенные для построения
-     * графов и работы с ними.
      */
     public static LinkedList<GraphNode> differentSearch(GraphNode v) {
         LinkedList<GraphNode> nodeList = new LinkedList<>();
-
         dfs(nodeList, v);
-
         return nodeList;
     }
 
@@ -83,7 +79,7 @@ public class Graph {
         v.setEntryCount(v.getEntryCount() + 1);
         nodeList.addLast(v);
 
-        for (GraphNode node : v.getGraphNodeList()) {
+        for (GraphNode node : v.getOutgoingNodeList()) {
             if (node.getEntryCount() == 0) dfs(nodeList, node);
         }
     }
@@ -107,7 +103,7 @@ public class Graph {
     private static boolean isCyclical(GraphNode v) {
         v.setEntryCount(1);
 
-        for (GraphNode node : v.getGraphNodeList()) {
+        for (GraphNode node : v.getOutgoingNodeList()) {
             if (node.getEntryCount() == 0) {
                 if(isCyclical(node)) return true;
             }
@@ -129,7 +125,41 @@ public class Graph {
      * Если в графе нет цикла, значит в нём существует хотя бы одна вершина к которой не ведет ни одного ребра.
      */
     public static Graph topologicalSort() {
+
         return null;
+    }
+
+    public boolean removeNode(GraphNode v){
+        return getNodeList().remove(v);
+    }
+
+    /**
+     * Метод находит первую ноду на которую нет рёбер с других нод, т.е. ни одна нода от нее не зависит.
+     * @return - если в графе есть хоть одна нода на которую не ссылается ни одна другая нода в графе,
+     * то возвращает ее, если нет то в ответе будет null
+     */
+    public static GraphNode findParentNode(Graph graph){
+        for(GraphNode node : graph.getNodeList()){
+            if (node.getOutgoingNodeList().size() == 0){
+                return node;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Метод находит все ноды в графе не имеющие зависимостей и возвращает их списком.
+     * @return - Возвращает список всех нод на которые нет ссылок с других нод в графе,
+     * либо пустой список если таких нод нет.
+     */
+    public static LinkedList<GraphNode> findAllParentNode(Graph graph){
+        LinkedList<GraphNode> nodes = new LinkedList<>();
+        for(GraphNode node : graph.getNodeList()){
+            if (node.getOutgoingNodeList().size() == 0){
+                nodes.add(node);
+            }
+        }
+        return nodes;
     }
 
     @Override
@@ -140,6 +170,9 @@ public class Graph {
                 '}';
     }
 
+    /**
+     * Выводит в консоль граф в виде списка.
+     */
     public void print() {
         System.out.println(name);
         for (GraphNode node : nodeList) {
