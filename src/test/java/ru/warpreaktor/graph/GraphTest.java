@@ -223,8 +223,38 @@ class GraphTest {
         assertion.add(gn1);
         graph = Graph.buildFromRoot("G1", gn1);
 
-
         Assertions.assertEquals(gn6, Graph.findParentNode(graph));
         graph.print();
+    }
+
+    @Test
+    void removeNode() {
+        Graph graph;
+        LinkedList<GraphNode> assertion = new LinkedList<>();
+        GraphNode gn1 = new GraphNode("gn1");
+        GraphNode gn2 = new GraphNode("gn2");
+        GraphNode gn3 = new GraphNode("gn3");
+        GraphNode gn4 = new GraphNode("gn4");
+        GraphNode gn5 = new GraphNode("gn5");
+        GraphNode gn6 = new GraphNode("gn6");
+
+        //Не циклический однонаправленный граф
+        gn1.addFewOutgoing(gn3, gn5);
+        gn2.addFewOutgoing(gn1, gn6);
+        gn3.addFewOutgoing(gn5);
+        gn4.addFewOutgoing(gn2, gn1, gn3);
+        gn6.addFewOutgoing(gn5);
+
+        assertion.add(gn1);
+        graph = Graph.buildFromRoot("G1", gn4);
+
+        LinkedList<GraphNode> listDependency = Graph.findTreeDependency(graph, true);
+        Assertions.assertEquals(gn4, listDependency.get(0));
+        Assertions.assertEquals(gn2, listDependency.get(1));
+        Assertions.assertEquals(gn6, listDependency.get(2));
+        Assertions.assertEquals(gn1, listDependency.get(3));
+        Assertions.assertEquals(gn3, listDependency.get(4));
+        Assertions.assertEquals(gn5, listDependency.get(5));
+        System.out.println(listDependency);
     }
 }

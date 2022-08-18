@@ -3,6 +3,8 @@ package ru.warpreaktor.graph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GraphNodeTest {
@@ -21,9 +23,26 @@ class GraphNodeTest {
 
     @Test
     void addAllOutgoing() {
+        GraphNode gn1 = new GraphNode("gn1");
+        GraphNode gn2 = new GraphNode("gn2");
+        GraphNode gn3 = new GraphNode("gn3");
+        LinkedList list = new LinkedList<>();
+        list.add(gn2);
+        list.add(gn3);
+        gn1.addAllOutgoing(list);
+
+        Assertions.assertEquals(gn1, gn2.getIncomingNodeList().getFirst());
+        Assertions.assertEquals(gn1, gn3.getIncomingNodeList().getFirst());
     }
 
     @Test
     void addFewOutgoing() {
+        GraphNode gn1 = new GraphNode("gn1");
+        GraphNode gn2 = new GraphNode("gn2");
+        GraphNode gn3 = new GraphNode("gn3");
+        gn1.addFewOutgoing(gn2, gn3);
+
+        Assertions.assertEquals(gn1, gn2.getIncomingNodeList().getFirst());
+        Assertions.assertEquals(gn1, gn3.getIncomingNodeList().getFirst());
     }
 }

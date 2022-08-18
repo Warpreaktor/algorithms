@@ -18,28 +18,24 @@ public class GraphNode {
     private LocalDateTime timeExited;
     private int entryCount = 0;
     private boolean isLooped = false;
-    private LinkedList<GraphNode> outgoingNodeList;
-    private LinkedList<GraphNode> incomingNodeList;
+    private LinkedList<GraphNode> outgoingNodeList = new LinkedList<>();
+    private LinkedList<GraphNode> incomingNodeList = new LinkedList<>();
 
     public GraphNode() {
-        outgoingNodeList = new LinkedList<>();
         this.name = this.toString();
     }
 
     public GraphNode(String name) {
-        outgoingNodeList = new LinkedList<>();
         this.name = name;
     }
 
     public GraphNode(LinkedList<GraphNode> outgoingNodeList) {
         this.name = this.toString();
-        outgoingNodeList = new LinkedList<>();
         addAllOutgoing(outgoingNodeList);
     }
 
     public GraphNode(String name, LinkedList<GraphNode> outgoingNodeList) {
         this.name = name;
-        outgoingNodeList = new LinkedList<>();
         addAllOutgoing(outgoingNodeList);
     }
 
@@ -74,7 +70,7 @@ public class GraphNode {
     }
 
     private boolean addIncoming(GraphNode v) {
-        return getOutgoingNodeList().add(v);
+        return getIncomingNodeList().add(v);
     }
 
     public void remove(GraphNode v) {
