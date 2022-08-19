@@ -1,6 +1,5 @@
 package ru.warpreaktor.practicum;
 
-import ru.warpreaktor.util.comparator.MapValueIntegerComparator;
 import ru.warpreaktor.util.fabric.ComparatorFabric;
 import ru.warpreaktor.util.fabric.MapComparatorFabric;
 
