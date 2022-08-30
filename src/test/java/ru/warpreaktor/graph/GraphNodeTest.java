@@ -2,10 +2,9 @@ package ru.warpreaktor.graph;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.warpreaktor.util.date_structure.graph.GraphNode;
 
 import java.util.LinkedList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GraphNodeTest {
 

@@ -6,7 +6,7 @@ package ru.warpreaktor.sort;
  */
 public class ShakerSort {
 
-    private static int[] sortInteger(int[] arr) {
+    public static int[] sort(int[] arr) {
         int buf = 0;
         int count = arr.length;
         for (int i = 0; i < arr.length; i++) {

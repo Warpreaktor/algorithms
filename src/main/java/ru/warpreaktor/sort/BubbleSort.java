@@ -1,5 +1,7 @@
 package ru.warpreaktor.sort;
 
+import ru.warpreaktor.util.Utils;
+
 /**
  *  Классическая сортировка пузырьком. Проходим массив от начала до конца сравнивая каждое число с последующим соседним.
  *  Если соседнее число меньше, то меняем их местами. Так мы сдвинем в конец массива самое большое число.
@@ -9,7 +11,7 @@ package ru.warpreaktor.sort;
  */
 public class BubbleSort {
 
-    public static int[] sortInteger(int[] arr) {
+    public static int[] sort(int[] arr) {
         int buf = 0;
         int count = arr.length;
         for (int i = 0; i < arr.length; i++) {
@@ -18,6 +20,19 @@ public class BubbleSort {
                     buf = arr[j+1];
                     arr[j+1] = arr[j];
                     arr[j] = buf;
+                }
+            }
+            count--;
+        }
+        return arr;
+    }
+
+    public static char[] sort(char[] arr) {
+        int count = arr.length;
+        while(count != 0) {
+            for(int i = 0; i < arr.length-1; i++) {
+                if(arr[i] > arr[i+1]) {
+                    Utils.swap(arr, i, i+1);
                 }
             }
             count--;

@@ -1,4 +1,4 @@
-package ru.warpreaktor.graph;
+package ru.warpreaktor.util.date_structure.graph;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;

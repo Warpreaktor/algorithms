@@ -30,4 +30,13 @@ class UtilsTest {
         Assertions.assertEquals(10, Utils.compareAndGetMax(0, 10));
         Assertions.assertEquals(10, Utils.compareAndGetMax(10, 10));
     }
+
+    /**
+     * Демонстрация того как работает упаковщик джавы.
+     */
+    @Test
+    void wrapper(){
+        Integer integer = Integer.valueOf(1);
+        System.out.println(1 == integer);
+    }
 }

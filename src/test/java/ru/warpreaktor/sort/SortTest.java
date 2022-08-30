@@ -38,23 +38,23 @@ class SortTest {
     @Test
     void bubbleSort() {
         int[] arr = new int[]{};
-        Assertions.assertArrayEquals(new int[]{}, BubbleSort.sortInteger(arr));
+        Assertions.assertArrayEquals(new int[]{}, BubbleSort.sort(arr));
 
         arr = new int[]{3,2,5,1};
-        Assertions.assertArrayEquals(new int[]{1,2,3,5}, BubbleSort.sortInteger(arr));
+        Assertions.assertArrayEquals(new int[]{1,2,3,5}, BubbleSort.sort(arr));
 
         arr = new int[]{10,5,7,3,8,2};
-        Assertions.assertArrayEquals(new int[]{2,3,5,7,8,10},BubbleSort.sortInteger(arr));
+        Assertions.assertArrayEquals(new int[]{2,3,5,7,8,10},BubbleSort.sort(arr));
 
         arr = new int[]{-1,0,5,-7,3,8,2,956};
-        Assertions.assertArrayEquals(new int[]{-7,-1,0,2,3,5,8,956},BubbleSort.sortInteger(arr));
+        Assertions.assertArrayEquals(new int[]{-7,-1,0,2,3,5,8,956},BubbleSort.sort(arr));
     }
 
     @Disabled
     @Test
     void BubbleSortBigData() {
         int[] arra = Arrays.copyOf(arr, arr.length);
-        BubbleSort.sortInteger(arra);
+        BubbleSort.sort(arra);
 
     }
 
