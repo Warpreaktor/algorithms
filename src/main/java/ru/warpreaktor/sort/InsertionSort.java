@@ -1,5 +1,6 @@
 package ru.warpreaktor.sort;
 
+import ru.warpreaktor.util.CollectionUtils;
 import ru.warpreaktor.util.Utils;
 
 /**
@@ -23,7 +24,7 @@ public class InsertionSort {
             sortedArr[i] = arr[i];
             int j = i;
             while (j > 0 && sortedArr[j] < sortedArr[j-1] ) {
-                Utils.swap(sortedArr, j, j - 1);
+                CollectionUtils.swap(sortedArr, j, j - 1);
                 j--;
             }
         }

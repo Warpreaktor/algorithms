@@ -1,6 +1,5 @@
 package ru.warpreaktor.util;
 
-import org.eclipse.core.runtime.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,26 +17,26 @@ class CollectionUtilsTest {
     @Test
     void divideTwo() {
         int[] arr = new int[]{};
-        Assertions.assertArrayEquals(new int[]{}, CollectionUtils.divideTwo(arr).get(0));
+        Assertions.assertArrayEquals(new int[]{}, CollectionUtils.splitInHalf(arr).get(0));
 
         arr = new int[]{5};
-        Assertions.assertArrayEquals(new int[]{5}, CollectionUtils.divideTwo(arr).get(0));
+        Assertions.assertArrayEquals(new int[]{5}, CollectionUtils.splitInHalf(arr).get(0));
 
         arr = new int[]{2, 1};
-        Assertions.assertArrayEquals(new int[]{2}, CollectionUtils.divideTwo(arr).get(0));
-        Assertions.assertArrayEquals(new int[]{1}, CollectionUtils.divideTwo(arr).get(1));
+        Assertions.assertArrayEquals(new int[]{2}, CollectionUtils.splitInHalf(arr).get(0));
+        Assertions.assertArrayEquals(new int[]{1}, CollectionUtils.splitInHalf(arr).get(1));
 
         arr = new int[]{2, 3, 1};
-        Assertions.assertArrayEquals(new int[]{2}, CollectionUtils.divideTwo(arr).get(0));
-        Assertions.assertArrayEquals(new int[]{3, 1}, CollectionUtils.divideTwo(arr).get(1));
+        Assertions.assertArrayEquals(new int[]{2}, CollectionUtils.splitInHalf(arr).get(0));
+        Assertions.assertArrayEquals(new int[]{3, 1}, CollectionUtils.splitInHalf(arr).get(1));
 
         arr = new int[]{10, 5, 7, 3, 8, 2};
-        Assertions.assertArrayEquals(new int[]{10, 5, 7}, CollectionUtils.divideTwo(arr).get(0));
-        Assertions.assertArrayEquals(new int[]{3, 8, 2}, CollectionUtils.divideTwo(arr).get(1));
+        Assertions.assertArrayEquals(new int[]{10, 5, 7}, CollectionUtils.splitInHalf(arr).get(0));
+        Assertions.assertArrayEquals(new int[]{3, 8, 2}, CollectionUtils.splitInHalf(arr).get(1));
 
         arr = new int[]{10, 5, 7, 3, 8, 2, 15};
-        Assertions.assertArrayEquals(new int[]{10, 5, 7}, CollectionUtils.divideTwo(arr).get(0));
-        Assertions.assertArrayEquals(new int[]{3, 8, 2, 15}, CollectionUtils.divideTwo(arr).get(1));
+        Assertions.assertArrayEquals(new int[]{10, 5, 7}, CollectionUtils.splitInHalf(arr).get(0));
+        Assertions.assertArrayEquals(new int[]{3, 8, 2, 15}, CollectionUtils.splitInHalf(arr).get(1));
 
     }
 
@@ -65,5 +64,13 @@ class CollectionUtilsTest {
         for (int i = 0; i < list.size(); i++) {
             Assertions.assertEquals(list.get(i), assertion.get(i));
         }
+    }
+
+    @Test
+    void swap() {
+        int[] arr = new int[]{1,2,3};
+        Assertions.assertArrayEquals(new int[]{1,3,2}, CollectionUtils.swap(arr, 1,2));
+        Assertions.assertArrayEquals(new int[]{3,1,2}, CollectionUtils.swap(arr, 0,1));
+        Assertions.assertArrayEquals(new int[]{2,1,3}, CollectionUtils.swap(arr, 0,2));
     }
 }

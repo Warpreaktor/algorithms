@@ -1,5 +1,6 @@
 package ru.warpreaktor.sort;
 
+import ru.warpreaktor.util.CollectionUtils;
 import ru.warpreaktor.util.Utils;
 
 /**
@@ -32,7 +33,7 @@ public class BubbleSort {
         while(count != 0) {
             for(int i = 0; i < arr.length-1; i++) {
                 if(arr[i] > arr[i+1]) {
-                    Utils.swap(arr, i, i+1);
+                    CollectionUtils.swap(arr, i, i+1);
                 }
             }
             count--;
