@@ -34,21 +34,15 @@ public class MaxConsecutiveElements {
         return result;
     }
 
-    public static int maxConsecutiveElements(int[] arr){
-        if(arr.length < 2){
-            return arr.length;
-        }
-
-        int result = 0;
+    public static int maxConsecutiveElements (int[] arr){
         int i = 0;
+        int j = 0;
+        int result = 0;
         while(i < arr.length){
-            int j = i;
-            while(j < arr.length && arr[i] == arr[j]){
+            while(j < arr.length && arr[j] == arr[i]){
                 j++;
             }
-            if(result < j - i){
-                result = j - i;
-            }
+            result = Utils.compareAndGetMax(result, j - i);
             i = j;
         }
         return result;
