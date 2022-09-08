@@ -12,6 +12,7 @@ public class GeneratorBracketSequences {
 
     /**
      * Решение рекурсией.
+     * Алгоритм взят отсюда https://habr.com/ru/company/vk/blog/420605/
      * Асимптотика -
      */
     public static ArrayList<char[]> generate(int bracketsNumber) {
