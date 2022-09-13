@@ -35,7 +35,7 @@ public class GeneratorBracketSequences {
             sequence[ind] = ')';
             generate(cnt - 1, ind + 1, k, sequence, result);
         }
-        //выходим из цикла и печатаем
+        //выходим из рекурсии и добавляем результирующую строку в массив
         if (ind == k) {
             if (cnt == 0) {
                 result.add(Arrays.copyOf(sequence, sequence.length));

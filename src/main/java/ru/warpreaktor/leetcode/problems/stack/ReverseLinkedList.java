@@ -5,31 +5,29 @@ import ru.warpreaktor.leetcode.ListNode;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ * https://leetcode.com/problems/reverse-linked-list
+ *
+ * Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
+ * Memory Usage: 42.4 MB, less than 80.84% of Java online submissions for Reverse Linked List.
+ * Алгоритм - Нам потребуется два указателя и пузырек для хранения информации о следующем элементе в оригинальном списке.
+ * Пройдем по всем элементам оригинального листа изменяя у них поле next на объект который был до него.
+ * Асимптотика - O(n)
+ */
 public class ReverseLinkedList {
+
     public static ListNode reverseList(ListNode head) {
-        // Если в списке всего один элемент то вернем его немедленно
-        if(head == null || head.next == null)return head;
+        if(head == null || head.next == null) return head;
 
-        // Первый указатель итерируется по данному списку
-        // Необходимо сохранять состояние
-        ListNode cursor = head;
-        ListNode previousNode = null;
-        LinkedList<ListNode> result = new LinkedList<>();
+        ListNode cursor = null;
+        ListNode nextNode = head;
 
-        //Итерируемся по оригинальному списку
-        //У каждого элемента результирующего списка .next будет равно предыдущему значению оригинального списка
-        while(cursor != null){
-            result.addFirst(cursor);
-            previousNode = cursor;
-            cursor = cursor.next;
-            previousNode.next = null;
+        while(nextNode != null){
+            ListNode bubble = nextNode.next;
+            nextNode.next = cursor;
+            cursor = nextNode;
+            nextNode = bubble;
         }
-        Iterator iterator = result.iterator();
-        ListNode ln = (ListNode)iterator.next();
-        while (iterator.hasNext()) {
-            ln.next = (ListNode)iterator.next();
-            ln = ln.next;
-        }
-        return result.get(0);
+        return cursor;
     }
 }

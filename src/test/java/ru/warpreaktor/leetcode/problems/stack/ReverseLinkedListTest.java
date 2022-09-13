@@ -17,6 +17,8 @@ class ReverseLinkedListTest {
         ListNode ln5;
         ListNode result;
 
+        Assertions.assertEquals(null, ReverseLinkedList.reverseList(null));
+
         ln3 = new ListNode(3, null);
         ln2 = new ListNode(2, ln3);
         ln1 = new ListNode(1, ln2);
