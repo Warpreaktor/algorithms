@@ -13,7 +13,7 @@ public class CacheQueue {
     }
 
     /**
-     *  Затем, добавляем объект в список просто подменяя ссылки.
+     *  Добавляем объект в список просто подменяя ссылки.
      */
     public CacheQueue.Node add(Object e) {
         if (size == capacity) {
@@ -92,7 +92,7 @@ public class CacheQueue {
             size++;
             return true;
         } else {
-            CacheQueue.Node oldHead = head;
+            CacheQueue.Node<Integer> oldHead = head;
             oldHead.next = newNode;
             newNode.previous = oldHead;
             head = newNode;
@@ -104,8 +104,8 @@ public class CacheQueue {
 
     public class Node<T> {
         T value;
-        CacheQueue.Node next;
-        CacheQueue.Node previous;
+        CacheQueue.Node<T> next;
+        CacheQueue.Node<T> previous;
         boolean isDeleted = false;
 
         public Node(T value) {

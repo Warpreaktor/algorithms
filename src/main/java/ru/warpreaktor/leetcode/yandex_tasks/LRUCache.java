@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class LRUCache {
     CacheQueue leastRecentlyUsed;
-    Map<Integer, CacheQueue.Node> map; // id против ноды из очереди.
+    Map<Integer, CacheQueue.Node<Integer>> map; // id против ноды из очереди.
 
     public LRUCache(int capacity) {
         this.map = new HashMap<>();
@@ -29,11 +29,10 @@ public class LRUCache {
      * важно, мы снова сможем их синхронизировать во время get запроса.
      */
     public void put(int id, int value) {
-        CacheQueue.Node updateNode = map.get(id);
+        CacheQueue.Node<Integer> updateNode = map.get(id);
         if (updateNode != null && !updateNode.isDeleted()) {
             updateNode.setValue(value);
             leastRecentlyUsed.refreshCache(updateNode);
-            return;
         } else {
             CacheQueue.Node newNode = leastRecentlyUsed.add(value);
             map.put(id, newNode);
