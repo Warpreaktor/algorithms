@@ -24,7 +24,6 @@ public class GeneratorBracketSequences {
         return generate(cnt, ind, k, sequence, result);
     }
     private static ArrayList<char[]> generate(int cnt, int ind, int k, char[] sequence, ArrayList<char[]> result) {
-
         //кладем откр.скобку, только если хватает места
         if (cnt <= k - ind - 2) {
             sequence[ind] = '(';
