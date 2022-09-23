@@ -3,9 +3,15 @@ package ru.warpreaktor.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class CollectionUtils {
 
+    /**
+     * Возвращает минимальное числов массива
+     * @param arr
+     * @return
+     */
     public static int min(int[] arr) {
         if (arr.length < 1) return 0;
 
@@ -107,5 +113,23 @@ public class CollectionUtils {
         arr[indexB] = arr[indexA];
         arr[indexA] = b;
         return arr;
+    }
+
+    /**
+     * Печатает в консоль каждый элемент массива
+     */
+    public static void printArray(int[] arr){
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }
+
+    public static void shuffleArray(int[] arr){
+        Random rand = new Random();
+
+        for (int i = 0; i < arr.length; i++) {
+            int randomIndexToSwap = rand.nextInt(arr.length);
+            swap(arr, i, randomIndexToSwap);
+        }
     }
 }
