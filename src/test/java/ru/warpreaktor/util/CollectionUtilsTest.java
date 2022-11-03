@@ -69,8 +69,11 @@ class CollectionUtilsTest {
     @Test
     void swap() {
         int[] arr = new int[]{1,2,3};
-        Assertions.assertArrayEquals(new int[]{1,3,2}, CollectionUtils.swap(arr, 1,2));
-        Assertions.assertArrayEquals(new int[]{3,1,2}, CollectionUtils.swap(arr, 0,1));
-        Assertions.assertArrayEquals(new int[]{2,1,3}, CollectionUtils.swap(arr, 0,2));
+        CollectionUtils.swap(arr, 1,2);
+        Assertions.assertArrayEquals(new int[]{1,3,2}, arr);
+        CollectionUtils.swap(arr, 0,1);
+        Assertions.assertArrayEquals(new int[]{3,1,2}, arr);
+        CollectionUtils.swap(arr, 0,2);
+        Assertions.assertArrayEquals(new int[]{2,1,3}, arr);
     }
 }

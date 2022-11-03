@@ -102,11 +102,10 @@ public class CollectionUtils {
     /**
      * Меняет местами два элемента в коллекци
      */
-    public static int[] swap(int[] arr, int indexA, int indexB){
+    public static void swap(int[] arr, int indexA, int indexB){
         int b = arr[indexB];
         arr[indexB] = arr[indexA];
         arr[indexA] = b;
-        return arr;
     }
     public static char[] swap(char[] arr, int indexA, int indexB){
         char b = arr[indexB];

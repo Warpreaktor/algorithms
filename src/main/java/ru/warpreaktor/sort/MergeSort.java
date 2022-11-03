@@ -10,7 +10,7 @@ import java.util.Arrays;
  * пока не доберемся до двух отсортированных массивов (согласно утверждению выше). Далее вверх по стеку будем возвращать
  * уже отсортированные два массива которые так же будут подвергаться слиянию до самой верхушки стека.
  * T(n) = O(n log n)
- * код взят с лекции Павла Маврина - https://www.youtube.com/watch?v=apR9GhhjBjM&ab_channel=PavelMavrin
+ * код написан по лекции Павла Маврина - https://www.youtube.com/watch?v=apR9GhhjBjM&ab_channel=PavelMavrin
  */
 public class MergeSort {
 
