@@ -1,5 +1,6 @@
 package ru.warpreaktor;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 class Research {
@@ -10,12 +11,7 @@ class Research {
         Random c = new Random();
         Random d = new Random();
         Random f = new Random();
-        Random e = new Random();
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
-        System.out.println(d);
-        System.out.println(f);
-        System.out.println(e);
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.get(0);
     }
 }
