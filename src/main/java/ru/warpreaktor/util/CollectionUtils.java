@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CollectionUtils {
 
@@ -130,5 +131,46 @@ public class CollectionUtils {
             int randomIndexToSwap = rand.nextInt(arr.length);
             swap(arr, i, randomIndexToSwap);
         }
+    }
+
+    /**
+     * Возвращает true если массив отсортирован
+     * T(n) = O(n/2)
+     */
+    public static boolean isSorted(int[] arr) {
+        int i = 0;
+        int j = arr.length - 1;
+        while (i < j) {
+            while (j >= i) {
+                if (arr[i] > arr[j]) {
+                    return false;
+                }
+                i++;
+                j--;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Возвращает true если массив отсортирован.
+     * Принимает ссылку на Integer переменную, для записи в нее количества проделанных операций.
+     * Метод нужен для вызова его в других алгоритмах и подсчета общего количества операций работы алгоритма.
+     * T(n) = O(n/2)
+     */
+    public static boolean isSorted(int[] arr, AtomicInteger totalOps) {
+        int i = 0;
+        int j = arr.length - 1;
+        while (i < j) {
+            while (j >= i) {
+                totalOps.incrementAndGet();
+                if (arr[i] > arr[j]) {
+                    return false;
+                }
+                i++;
+                j--;
+            }
+        }
+        return true;
     }
 }

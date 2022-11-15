@@ -76,4 +76,11 @@ class CollectionUtilsTest {
         CollectionUtils.swap(arr, 0,2);
         Assertions.assertArrayEquals(new int[]{2,1,3}, arr);
     }
+
+    @Test
+    void isSorted() {
+        Assertions.assertEquals(true, CollectionUtils.isSorted(new int[]{1, 2, 3, 4, 5, 6}));
+        Assertions.assertEquals(false, CollectionUtils.isSorted(new int[]{5, 2, 1, 6, 3, 4}));
+    }
+
 }
