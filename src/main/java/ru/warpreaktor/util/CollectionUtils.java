@@ -173,4 +173,41 @@ public class CollectionUtils {
         }
         return true;
     }
+
+    private int[] allMax(int[] arr, int x) {
+        if (arr.length < 2) return arr;
+        ArrayList<Integer> result = new ArrayList();
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > x) {
+                result.add(arr[i]);
+            }
+        }
+
+        return CollectionUtils.toArray(result);
+    }
+
+    private int[] merge(int[]... arr) {
+        if (arr.length < 2) return arr[0];
+
+        int sumLength = 0;
+        for (int[] i : arr) {
+            if (i.length < 1) {
+                continue;
+            }
+            sumLength += i.length;
+        }
+
+        int[] result = new int[sumLength];
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i].length < 1) {
+                    break;
+                }
+                result[count] = arr[i][j];
+                count++;
+            }
+        }
+        return result;
+    }
 }

@@ -25,14 +25,25 @@ class MergeSortTest {
     }
 
     @Test
-    void mergeSort() {
-        int[] arr = new int[]{8,10,5,7,2,3,8,2};
-        MergeSort mergeSort5 = new MergeSort();
-        Assertions.assertArrayEquals(new int[]{2,2,3,5,7,8,8,10},mergeSort5.mergeSort(arr));
-
-        arr = new int[]{956,-1,0,5,-7,3,3,8,2,956};
+    void negativeNumbersMergeSort() {
+        int[] arr = new int[]{956,-1,0,5,-7,3,3,8,2,956};
         MergeSort mergeSort6 = new MergeSort();
         Assertions.assertArrayEquals(new int[]{-7,-1,0,2,3,3,5,8,956,956},mergeSort6.mergeSort(arr));
+    }
+
+    /**
+     * n = 60; n log n = 360
+     * n = 120; n log n = 840
+     */
+    @Test
+    void sort5() {
+        int[] arr = Generator.genIntegerArray(120, true);
+        int[] sortedArr = Arrays.copyOf(arr, arr.length);
+        Arrays.sort(sortedArr);
+        MergeSort mergeSort = new MergeSort();
+
+        Assertions.assertArrayEquals(sortedArr, mergeSort.mergeSort(arr));
+        System.out.println(mergeSort.totalOperations);
     }
 
     @Test
@@ -59,7 +70,7 @@ class MergeSortTest {
     void mergeSortIfAlreadySorted2() {
         int[] arr = new int[]{2,3,5,7,8,10};
         MergeSort mergeSort = new MergeSort();
-        mergeSort.mergeSortIfNotSorted(arr);
+        mergeSort.mergeSortOnlyNotSorted(arr);
         System.out.println(mergeSort.totalOperations);
     }
 }

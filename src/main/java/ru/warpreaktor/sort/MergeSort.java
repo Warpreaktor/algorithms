@@ -23,7 +23,7 @@ public class MergeSort {
         return result;
     }
 
-    public int[] mergeSortIfNotSorted(int[] arr) {
+    public int[] mergeSortOnlyNotSorted(int[] arr) {
         //Если массив менее двух элементов - массив отсортирован
         if (arr.length < 2) return arr;
         //Если массив отсортирован, вернем его как есть. T(n) = O(n)
