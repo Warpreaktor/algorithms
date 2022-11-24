@@ -52,6 +52,8 @@ class QuickSortTest {
     }
 
     /**
+     * Быстрая сортировка работает быстрей сортировки слиянием несмотря на то,
+     * что асимптотика у них одинаковая.
      * n = 60; n log n = 360
      * n = 120; n log n = 840
      */
@@ -61,7 +63,6 @@ class QuickSortTest {
         int[] sortedArr = Arrays.copyOf(arr, arr.length);
         Arrays.sort(sortedArr);
         QuickSort quickSort = new QuickSort();
-
         Assertions.assertArrayEquals(sortedArr, quickSort.sort(arr));
         System.out.println(quickSort.totalOperations);
     }
@@ -75,19 +76,20 @@ class QuickSortTest {
         System.out.println(quickSort.totalOperations);
     }
 
+    /**
+     * quickSort test на большие входящие данные
+     */
     @Test
     void sort7() {
-        int[] arr = new int[]{6, 4, 9, 6, 0, 5, 7, 8, 6, 0};
-        QuickSort quickSort = new QuickSort();
-        Assertions.assertArrayEquals(new int[]{0, 0, 4, 5, 6, 6, 6, 7, 8, 9}, quickSort.sort(arr));
+        int[] arr = Generator.genIntegerArray(1000000, true);
+        int[] result = Arrays.copyOf(arr, arr.length);
 
-        //Тест на рандомные массивы. Эталоном для проверки будет встроенная джава сортировка.
-        for (int i = 0; i < 3; i++) {
-            arr = Generator.genIntegerArray(10000, true);
-            int[] result = Arrays.copyOf(arr, arr.length);
-            Arrays.sort(result);
-            quickSort.sort(arr);
-            Assertions.assertArrayEquals(result, arr);
-        }
+        QuickSort quickSort = new QuickSort();
+        quickSort.sort(arr);
+
+        Arrays.sort(result);
+
+        Assertions.assertArrayEquals(result, arr);
+        System.out.println(quickSort.totalOperations);
     }
 }

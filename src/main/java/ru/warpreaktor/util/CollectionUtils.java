@@ -55,13 +55,22 @@ public class CollectionUtils {
 
     /**
      * Переносит все объекты из ArrayList в обычный массив
-     * @param arr
-     * @return
+     * @param arr - ArrayList который будет скопирован
+     * @return - возвращает копию ArrayList в виде массива
      */
     public static int[] toArray(ArrayList<Integer> arr) {
         int[] result = new int[arr.size()];
         int count = 0;
         for (Integer i : arr) {
+            result[count] = i;
+            count++;
+        }
+        return result;
+    }
+    public static double[] toArrayD(ArrayList<Double> arr) {
+        double[] result = new double[arr.size()];
+        int count = 0;
+        for (Double i : arr) {
             result[count] = i;
             count++;
         }
@@ -108,11 +117,21 @@ public class CollectionUtils {
         arr[indexB] = arr[indexA];
         arr[indexA] = b;
     }
+    public static void swap(double[] arr, int indexA, int indexB){
+        double b = arr[indexB];
+        arr[indexB] = arr[indexA];
+        arr[indexA] = b;
+    }
     public static char[] swap(char[] arr, int indexA, int indexB){
         char b = arr[indexB];
         arr[indexB] = arr[indexA];
         arr[indexA] = b;
         return arr;
+    }
+    public static void swap(ArrayList<Double> arr, int indexA, int indexB){
+        double b = arr.get(indexB);
+        arr.set(indexB, arr.get(indexA));
+        arr.set(indexA, b);
     }
 
     /**

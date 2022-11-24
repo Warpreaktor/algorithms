@@ -31,7 +31,6 @@ public class Generator {
      *
      * @param arrSize - размер генерируемого масива
      * @param rand    - при значении true массив заполнится случайными цифрами. При false массив будет упорядоченным.
-     * @return изменяет переданный массив и возвращает его.
      */
     public static int[] genIntegerArray(int arrSize, boolean rand) {
         int arr[] = new int[arrSize];
@@ -49,11 +48,10 @@ public class Generator {
     }
 
     /**
-     * Перегруженный метод, в котором по мимо размера массива можно указать границы генерируемых int значений.
+     * Перегруженный метод, в котором по-мимо размера массива можно указать границы генерируемых int значений.
      *
      * @param arrSize  - размер генерируемого масива.
      * @param numBound - граница генерируемого числа от 0.
-     * @return изменяет переданный массив и возвращает его.
      */
     public static int[] genIntegerArray(int arrSize, int numBound) {
         Random random = new Random();
@@ -61,6 +59,20 @@ public class Generator {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(numBound);
         }
+        return arr;
+    }
+
+    /**
+     * Генерирует массив double со случайными значениями в пределах от 0 до 1 не включая целые 0 и 1.
+     *
+     * @param arrSize - размер генерируемого массива
+     */
+    public static double[] genDoubleArray(int arrSize) {
+        double arr[] = new double[arrSize];
+            Random random = new Random();
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = random.nextDouble();
+            }
         return arr;
     }
 
