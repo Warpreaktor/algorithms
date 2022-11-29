@@ -1,9 +1,6 @@
 package ru.warpreaktor.sort;
 
-import ru.warpreaktor.util.CollectionUtils;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -19,6 +16,44 @@ public class BucketSort {
 
     public AtomicInteger getTotalOperations() {
         return totalOperations;
+    }
+
+    /**
+     * Сортировка корзинами с заранее известными данными.
+     * Простейшая реализация. Создаем индексированный список в котором каждый номер индекса будет
+     * равен элементу из массива для сортировки.
+     * Минусы:
+     * 1. Метод НЕ работает с отрицательными числами.
+     * 2. Расходуется много лишней памяти.
+     */
+    public void simpleBucketSort(int[] arr) {
+        if (arr == null) return;
+
+        //Вычислим максимальное число в массиве
+        int max = maxInt(arr);
+
+        if (max < 1) {
+            return;
+        } else {
+            max += 1;
+        }
+        // Создаем массив с максимальной емкостью и инициализируем все данные в корзине равными 0.
+        int[] buckets;
+        buckets = new int[max];
+
+        // 1. Ведем подсчет
+        for (int i = 0; i < arr.length; i++) {
+            totalOperations.incrementAndGet();
+            buckets[arr[i]]++;
+        }
+        // 2. Заполняем результирующий массив согласно подсчету
+        for (int i = 0, j = 0; i < max; i++) {
+            while ((buckets[i]--) > 0) {
+                totalOperations.incrementAndGet();
+                arr[j++] = i;
+            }
+        }
+        buckets = null;
     }
 
     /**
@@ -78,49 +113,6 @@ public class BucketSort {
             }
         }
         return arr;
-    }
-
-    /**
-     * Сортировка корзинами с заранее известными данными.
-     * Простейшая реализация. Создаем индексированный список в котором каждый номер индекса будет
-     * равен элементу из массива для сортировки.
-     * Минусы:
-     * 1. Метод НЕ работает с отрицательными числами.
-     * 2. Расходуется много лишней памяти.
-     */
-    public void simpleBucketSort(int[] arr) {
-        if (arr == null) return;
-
-        //Вычислим максимальное число в массиве
-        int max = Integer.MIN_VALUE;
-        for (int i = 0; i < arr.length; i++) {
-            totalOperations.incrementAndGet();
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-        }
-        if (max < 1) {
-            return;
-        } else {
-            max += 1;
-        }
-        // Создаем массив с максимальной емкостью и инициализируем все данные в корзине равными 0.
-        int[] buckets;
-        buckets = new int[max];
-
-        // 1. считать
-        for (int i = 0; i < arr.length; i++) {
-            totalOperations.incrementAndGet();
-            buckets[arr[i]]++;
-        }
-        // 2. Сортировка
-        for (int i = 0, j = 0; i < max; i++) {
-            while ((buckets[i]--) > 0) {
-                totalOperations.incrementAndGet();
-                arr[j++] = i;
-            }
-        }
-        buckets = null;
     }
 
     /**
@@ -199,4 +191,14 @@ public class BucketSort {
         }
     }
 
+    private int maxInt(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            totalOperations.incrementAndGet();
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
 }

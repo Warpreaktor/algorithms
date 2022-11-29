@@ -78,6 +78,7 @@ class BucketSortTest {
         BucketSort bucketSort = new BucketSort();
         bucketSort.simpleBucketSort(arr);
         Assertions.assertArrayEquals(result, arr);
+        System.out.println(bucketSort.getTotalOperations());
     }
 
     /**
@@ -139,8 +140,11 @@ class BucketSortTest {
         Arrays.sort(result);
 
         BucketSort bucketSort = new BucketSort();
-        bucketSort.simpleBucketSort(arr);
-        Assertions.assertArrayEquals(result, arr);
+
+        Assertions.assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            bucketSort.simpleBucketSort(arr);
+        });
+
         System.out.println(bucketSort.getTotalOperations());
     }
 
@@ -176,7 +180,7 @@ class BucketSortTest {
     /**
      * mixedSort на большом количестве данных
      * 1млн данных
-     * n + ~785121 ops total test time ~ 530ms
+     * n + ~785121 ops total test time ~ 900ms
      */
     @Test
     void mixedSort3() {
