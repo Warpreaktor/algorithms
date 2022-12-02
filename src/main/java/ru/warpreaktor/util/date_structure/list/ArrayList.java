@@ -3,18 +3,18 @@ package ru.warpreaktor.util.date_structure.list;
 /**
  * Простая(учебная) реализация Динамического Не Синхронизированного Массива.
  */
-public class SimpleArrayList {
+public class ArrayList {
 
     private int size = 0;
     private int capacity = 10;
     private String[] data;
     private final double capacityMultiplier = 1.5;
 
-    public SimpleArrayList() {
+    public ArrayList() {
         this.data = new String[capacity];
     }
 
-    public SimpleArrayList(int capacity) {
+    public ArrayList(int capacity) {
         this.capacity = capacity;
         this.data = new String[capacity];
     }
@@ -66,7 +66,8 @@ public class SimpleArrayList {
     }
 
     /**
-     * Удаление объекта по индексу
+     * Удаление объекта по индексу.
+     * Операция требует переиндексирования всех объектов следующих за удаляемым.
      * O(n)
      */
     public boolean remove(int index) {

@@ -6,7 +6,7 @@ import ru.warpreaktor.util.date_structure.graph.GraphNode;
 
 import java.util.LinkedList;
 
-class GraphNodeTest {
+class GraphLinkedNodeTest {
 
     @Test
     void addOutgoing() {

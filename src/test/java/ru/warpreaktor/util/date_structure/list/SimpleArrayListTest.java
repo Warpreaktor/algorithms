@@ -8,15 +8,15 @@ class SimpleArrayListTest {
     @Test
     void size() {
         String str = "abc";
-        SimpleArrayList simpleArrayList = new SimpleArrayList();
-        Assertions.assertEquals(0, simpleArrayList.size());
-        simpleArrayList.add(str);
-        Assertions.assertEquals(1, simpleArrayList.size());
-        simpleArrayList.add(str);
-        simpleArrayList.add(str);
-        simpleArrayList.add(str);
-        simpleArrayList.add(str);
-        Assertions.assertEquals(5, simpleArrayList.size());
+        ArrayList arrayList = new ArrayList();
+        Assertions.assertEquals(0, arrayList.size());
+        arrayList.add(str);
+        Assertions.assertEquals(1, arrayList.size());
+        arrayList.add(str);
+        arrayList.add(str);
+        arrayList.add(str);
+        arrayList.add(str);
+        Assertions.assertEquals(5, arrayList.size());
     }
 
     @Test
@@ -26,14 +26,14 @@ class SimpleArrayListTest {
         String str3 = "Фотограф";
         String str4 = "Ку-Ка-Ре-Куу!";
         String str5 = "Почва была мягкой...";
-        SimpleArrayList simpleArrayList = new SimpleArrayList();
-        simpleArrayList.add(str1);
-        simpleArrayList.add(str2);
-        simpleArrayList.add(str3);
-        simpleArrayList.add(str4);
-        simpleArrayList.add(str5);
-        Assertions.assertEquals("Водолей", simpleArrayList.get(1));
-        Assertions.assertEquals("Почва была мягкой...", simpleArrayList.get(4));
+        ArrayList arrayList = new ArrayList();
+        arrayList.add(str1);
+        arrayList.add(str2);
+        arrayList.add(str3);
+        arrayList.add(str4);
+        arrayList.add(str5);
+        Assertions.assertEquals("Водолей", arrayList.get(1));
+        Assertions.assertEquals("Почва была мягкой...", arrayList.get(4));
     }
 
     @Test
@@ -43,16 +43,16 @@ class SimpleArrayListTest {
         String str3 = "Фотограф";
         String str4 = "Ку-Ка-Ре-Куу!";
         String str5 = "Почва была мягкой...";
-        SimpleArrayList simpleArrayList = new SimpleArrayList();
-        simpleArrayList.add(str1);
-        simpleArrayList.add(str2);
-        simpleArrayList.add(str3);
-        simpleArrayList.add(str4);
-        simpleArrayList.add(str5);
-        simpleArrayList.set(0, "Вермишель");
-        Assertions.assertEquals("Вермишель", simpleArrayList.get(0));
-        simpleArrayList.set(3, "Последовательность");
-        Assertions.assertEquals("Последовательность", simpleArrayList.get(3));
+        ArrayList arrayList = new ArrayList();
+        arrayList.add(str1);
+        arrayList.add(str2);
+        arrayList.add(str3);
+        arrayList.add(str4);
+        arrayList.add(str5);
+        arrayList.set(0, "Вермишель");
+        Assertions.assertEquals("Вермишель", arrayList.get(0));
+        arrayList.set(3, "Последовательность");
+        Assertions.assertEquals("Последовательность", arrayList.get(3));
     }
 
     @Test
@@ -61,12 +61,12 @@ class SimpleArrayListTest {
                 "Ку-Ка-Ре-Куу!","Почва была мягкой...","Скрепки","ШАРОМЫГА","Это оскорбительно! Фи!",
                 "Упорство", "Кросс","Корм","Лингвистика","Лопата","Проникновенность","На воре шапка горит!",
                 "Кто такой застрельщик?"};
-        SimpleArrayList simpleArrayList = new SimpleArrayList();
+        ArrayList arrayList = new ArrayList();
         for (int i = 0; i < arr.length; i++) {
-            simpleArrayList.add(arr[i]);
-            Assertions.assertEquals(i+1, simpleArrayList.size());
+            arrayList.add(arr[i]);
+            Assertions.assertEquals(i+1, arrayList.size());
         }
-        Assertions.assertArrayEquals(arr, simpleArrayList.toArray());
+        Assertions.assertArrayEquals(arr, arrayList.toArray());
     }
 
     @Test
@@ -75,19 +75,19 @@ class SimpleArrayListTest {
                 "Ку-Ка-Ре-Куу!","Почва была мягкой...","Скрепки","ШАРОМЫГА","Это оскорбительно! Фи!",
                 "Упорство", "Кросс","Корм","Лингвистика","Лопата","Проникновенность","На воре шапка горит!",
                 "Кто такой застрельщик?"};
-        SimpleArrayList simpleArrayList = new SimpleArrayList();
+        ArrayList arrayList = new ArrayList();
         for (int i = 0; i < arr.length; i++) {
-            simpleArrayList.add(arr[i]);
+            arrayList.add(arr[i]);
         }
-        Assertions.assertEquals("Снегоуборочная машина", simpleArrayList.get(0));
-        int size = simpleArrayList.size();
-        simpleArrayList.remove(0);
-        Assertions.assertEquals("Инжектор", simpleArrayList.get(0));
-        Assertions.assertEquals(size-1, simpleArrayList.size());
+        Assertions.assertEquals("Снегоуборочная машина", arrayList.get(0));
+        int size = arrayList.size();
+        arrayList.remove(0);
+        Assertions.assertEquals("Инжектор", arrayList.get(0));
+        Assertions.assertEquals(size-1, arrayList.size());
 
-        simpleArrayList.remove(15);
-        Assertions.assertEquals("На воре шапка горит!", simpleArrayList.get(14));
-        Assertions.assertEquals(15, simpleArrayList.size());
+        arrayList.remove(15);
+        Assertions.assertEquals("На воре шапка горит!", arrayList.get(14));
+        Assertions.assertEquals(15, arrayList.size());
     }
 
     @Test
@@ -96,11 +96,11 @@ class SimpleArrayListTest {
                 "Ку-Ка-Ре-Куу!","Почва была мягкой...","Скрепки","ШАРОМЫГА","Это оскорбительно! Фи!",
                 "Упорство", "Кросс","Корм","Лингвистика","Лопата","Проникновенность","На воре шапка горит!",
                 "Кто такой застрельщик?"};
-        SimpleArrayList simpleArrayList = new SimpleArrayList();
+        ArrayList arrayList = new ArrayList();
         for (int i = 0; i < arr.length; i++) {
-            simpleArrayList.add(arr[i]);
+            arrayList.add(arr[i]);
         }
-        Assertions.assertEquals(17, simpleArrayList.size());
-        Assertions.assertArrayEquals(arr, simpleArrayList.toArray());
+        Assertions.assertEquals(17, arrayList.size());
+        Assertions.assertArrayEquals(arr, arrayList.toArray());
     }
 }
