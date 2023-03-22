@@ -1,4 +1,4 @@
-package ru.warpreaktor.the_art_of_computer_programming.volume_1_fundamental_algorithms;
+package ru.warpreaktor.mathematic;
 
 /**
  * Эффективный алгоритм для нахождения наибольшего общего делителя двух целых чисел.
